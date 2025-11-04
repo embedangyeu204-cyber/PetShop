@@ -1,0 +1,148 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, #f3e8ff 0%, #fce7f3 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #7c3aed;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo i {
+  font-size: 24px;
+}
+
+.user-profile {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar i {
+  font-size: 48px;
+  color: #7c3aed;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #2d1b4e;
+  font-size: 16px;
+}
+
+.user-role {
+  font-size: 13px;
+  color: #7c3aed;
+  font-weight: 500;
+}
+
+.sidebar-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b4d8a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  padding: 0 12px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #2d1b4e;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+  font-size: 14px;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+.sidebar-item.active {
+  background: #7c3aed;
+  color: white;
+}
+
+.sidebar-item i {
+  width: 20px;
+  font-size: 16px;
+}
+
+.sidebar-item .badge {
+  margin-left: auto;
+  background: #7c3aed;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.sidebar-item.logout {
+  color: #ef4444;
+  margin-top: auto;
+}
+
+.sidebar-item.logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Main Content */
+.dashboard-main {
+  margin-left: 280px;
+  flex: 1;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

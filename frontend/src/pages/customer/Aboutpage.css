@@ -1,0 +1,391 @@
+/* About Page - Exact Match Design */
+
+.about-container {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.about-container-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Hero Section */
+.about-hero {
+  background: #FEF1F8;
+  padding: 80px 0;
+}
+
+.about-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.about-hero-content {
+  flex: 1;
+  max-width: 480px;
+}
+
+.about-label {
+  color: #7C3AED;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.about-hero h1 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1F2937;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.about-hero p {
+  font-size: 16px;
+  color: #9CA3AF;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.about-btn {
+  background: #7C3AED;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.about-btn:hover {
+  background: #6D28D9;
+  transform: translateY(-2px);
+}
+
+.about-btn i {
+  font-size: 16px;
+}
+
+.about-hero-images {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 16px;
+}
+
+.about-hero-images img {
+  width: 200px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Section Title */
+.about-section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 50px;
+}
+
+/* Mission Section */
+.about-mission {
+  padding: 80px 0;
+  background: white;
+}
+
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-mission-card {
+  background: white;
+  border: 1px solid #F3F4F6;
+  padding: 32px 24px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.about-mission-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #E5E7EB;
+}
+
+.about-mission-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.about-mission-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 12px;
+}
+
+.about-mission-card p {
+  font-size: 14px;
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+
+/* Story Section */
+.about-story {
+  padding: 80px 0;
+  background: white;
+}
+
+.about-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-timeline-row {
+  display: flex;
+  gap: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.about-timeline-row:last-child {
+  border-bottom: none;
+}
+
+.about-timeline-year {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F2937;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.about-timeline-text {
+  font-size: 15px;
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+
+/* Values Section */
+.about-values {
+  padding: 80px 0;
+  background: #FEF1F8;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-value-card {
+  background: white;
+  padding: 32px 24px;
+  border-radius: 12px;
+  border: 1px solid #F9FAFB;
+}
+
+.about-value-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.about-value-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 12px;
+}
+
+.about-value-card p {
+  font-size: 14px;
+  color: #1F2937;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Team Section */
+.about-team {
+  padding: 80px 0;
+  background: white;
+}
+
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.about-team-card {
+  background: white;
+  border: 1px solid #F3F4F6;
+  padding: 32px 24px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.about-team-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.about-team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.about-team-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 6px;
+}
+
+.about-team-role {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.about-team-btn {
+  width: 100%;
+  background: #FDF2F8;
+  color: #7C3AED;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s;
+}
+
+.about-team-btn:hover {
+  background: #F3E8FF;
+}
+
+.about-team-btn i {
+  font-size: 14px;
+}
+
+/* CTA Section */
+.about-cta {
+  padding: 60px 0;
+  background: white;
+  text-align: left;
+}
+
+.about-cta h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 8px;
+}
+
+.about-cta p {
+  font-size: 14px;
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-hero-container {
+    gap: 50px;
+  }
+
+  .about-mission-grid,
+  .about-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-hero-content {
+    max-width: 100%;
+  }
+
+  .about-hero-images {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .about-hero-images img {
+    width: 100%;
+  }
+
+  .about-mission-grid,
+  .about-values-grid,
+  .about-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero h1 {
+    font-size: 32px;
+  }
+
+  .about-section-title {
+    font-size: 28px;
+  }
+
+  .about-timeline-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container-inner,
+  .about-hero-container {
+    padding: 0 20px;
+  }
+
+  .about-hero {
+    padding: 50px 0;
+  }
+
+  .about-mission,
+  .about-story,
+  .about-values,
+  .about-team {
+    padding: 50px 0;
+  }
+
+  .about-hero h1 {
+    font-size: 28px;
+  }
+
+  .about-hero-images {
+    grid-template-columns: 1fr;
+  }
+}

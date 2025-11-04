@@ -22,3 +22,102 @@ lerna-debug.log*
 # temp directory
 .temp
 .tmp
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production build
+/build
+/dist
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vscode / jetbrains
+.vscode/
+.idea/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+
+# lock files (tùy chọn – nếu bạn dùng 1 trình quản lý gói cố định thì giữ lại)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+
+# local server / cache
+/.parcel-cache
+/.next
+/.nuxt
+/out
+
+# Python / Flask
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python environments
+.venv/
+venv/
+ENV/
+env/
+backend/venv/
+.python-version
+
+# Python packaging / artifacts
+build/
+dist/
+develop-eggs/
+.eggs/
+parts/
+sdist/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-wheel-metadata/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing / caches
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+.hypothesis/
+.cache/
+
+# Flask instance folder
+instance/
+
+# Frontend (catch-all for nested)
+node_modules/
+frontend/node_modules/
