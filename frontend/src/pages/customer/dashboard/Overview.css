@@ -1,0 +1,363 @@
+.overview-page {
+  max-width: 1200px;
+}
+
+.welcome-section h1 {
+  font-size: 32px;
+  color: #2d1b4e;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-customer {
+  background: #7c3aed;
+  color: white;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.btn-primary-action,
+.btn-secondary-action {
+  border: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.btn-primary-action {
+  background: #7c3aed;
+  color: white;
+}
+
+.btn-primary-action:hover {
+  background: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+}
+
+.btn-secondary-action {
+  background: #fce7f3;
+  color: #7c3aed;
+}
+
+.btn-secondary-action:hover {
+  background: #fbcfe8;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.next-appointment-card,
+.your-pets-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.next-appointment-card h3,
+.your-pets-card h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #2d1b4e;
+}
+
+.appointment-card {
+  background: linear-gradient(135deg, #f3edff 0%, #fef2f8 100%);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.appointment-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #342a63;
+}
+
+.appointment-meta {
+  color: #5f4caa;
+  font-weight: 500;
+}
+
+.appointment-secondary {
+  color: #8778b8;
+  font-size: 13px;
+}
+
+.appointment-status-pill {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.15);
+  color: #6a4bf5;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.appointment-empty {
+  background: #fce7f3;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.appointment-empty p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d1b4e;
+  margin-bottom: 4px;
+}
+
+.appointment-empty small {
+  color: #666;
+  font-size: 14px;
+}
+
+.pets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pet-item {
+  background: #fce7f3;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pet-item i {
+  font-size: 28px;
+  color: #7c3aed;
+}
+
+.pet-name {
+  font-weight: 600;
+  color: #2d1b4e;
+}
+
+.pet-info {
+  font-size: 13px;
+  color: #666;
+}
+
+.empty-state {
+  background: linear-gradient(135deg, #f3edff 0%, #fef2f8 100%);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  color: #6b5aa8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.empty-state.compact {
+  padding: 18px;
+}
+
+.empty-state i {
+  font-size: 24px;
+  color: #7c3aed;
+}
+
+.overview-appointments-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  color: #2d1b4e;
+}
+
+.btn-view-all {
+  background: #fce7f3;
+  color: #7c3aed;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.overview-appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.overview-appointment-card {
+  background: #fce7f3;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.overview-appointment-card i {
+  font-size: 22px;
+  color: #7c3aed;
+}
+
+.overview-appointment-info {
+  flex: 1;
+}
+
+.overview-appointment-title {
+  font-weight: 600;
+  color: #2d1b4e;
+  margin-bottom: 4px;
+}
+
+.overview-appointment-details {
+  font-size: 13px;
+  color: #666;
+}
+
+.overview-appointment-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.overview-appointment-status.status-confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.overview-appointment-status.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.overview-appointment-status.status-cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.overview-message.error {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fde8e8;
+  color: #b4232c;
+  font-weight: 600;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 60px 0;
+  color: #6554a6;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3edff;
+  border-top-color: #6a4bf5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.overview-pagination {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #6b5aa8;
+}
+
+.pagination-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #e5d9ff;
+  background: #fff;
+  color: #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f3edff;
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.15);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pagination-info {
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
