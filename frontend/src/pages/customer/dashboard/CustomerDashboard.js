@@ -1,8 +1,9 @@
 import React from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, NavLink, useNavigate } from 'react-router-dom';
+import { LuBell, LuCalendarDays, LuCircleHelp, LuLayoutGrid, LuLogOut, LuMessageCircle, LuMessageSquare, LuUsers } from 'react-icons/lu';
 import './CustomerDashboard.css';
+import { useAuth } from '../../../context/AuthContext';
 
-// Import các sub-pages
 import Overview from './Overview';
 import ManageProfile from './ManageProfile';
 import Appointments from './Appointments';
@@ -11,91 +12,122 @@ import Feedback from './Feedback';
 import Notifications from './Notifications';
 import HelpCenter from './HelpCenter';
 
+const formatRoleLabel = (role) => {
+  if (!role) return 'Customer';
+  const value = role.toLowerCase();
+  if (value === 'veterinary' || value === 'veterinarian') return 'Veterinarian';
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+const formatName = (user) => {
+  if (!user) return 'Jane Doe';
+  if (user.fullName) return user.fullName;
+  const name = `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim();
+  if (name) return name;
+  return user.email || 'Jane Doe';
+};
+
 function CustomerDashboard() {
   const navigate = useNavigate();
-  const userName = localStorage.getItem('userName') || 'Jane Doe';
-  const userRole = localStorage.getItem('role') || 'Customer';
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.clear();
-    navigate('/customer-login');
+    logout();
+    navigate('/customer-login', { replace: true });
   };
 
   return (
     <div className="dashboard-layout">
-      {/* Sidebar */}
       <aside className="dashboard-sidebar">
-        <div className="sidebar-header">
-          <Link to="/" className="sidebar-logo">
-            <i className="fa-solid fa-paw"></i>
-            <span>Shop Pet</span>
-          </Link>
-        </div>
 
         <div className="user-profile">
           <div className="user-avatar">
-            <i className="fa-solid fa-user-circle"></i>
+            <img
+              src={`https://i.pravatar.cc/80?u=${encodeURIComponent(formatName(user))}`}
+              alt={formatName(user)}
+            />
           </div>
           <div className="user-info">
-            <div className="user-name">{userName}</div>
-            <div className="user-role">{userRole}</div>
+            <div className="user-name">{formatName(user)}</div>
+            <div className="user-role">{formatRoleLabel(user?.role)}</div>
           </div>
         </div>
 
         <div className="sidebar-section">
           <div className="section-title">Dashboard</div>
-          <Link to="/dashboard" className="sidebar-item">
-            <i className="fa-solid fa-table-columns"></i>
+          <NavLink
+            to="/dashboard"
+            end
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuLayoutGrid className="sidebar-item-icon" aria-hidden="true" />
             <span>Overview</span>
-          </Link>
+          </NavLink>
         </div>
 
         <div className="sidebar-section">
           <div className="section-title">Customer Functions</div>
-          
-          <Link to="/dashboard/profile" className="sidebar-item">
-            <i className="fa-solid fa-user"></i>
-            <span>Manage personal & pet profiles</span>
-          </Link>
 
-          <Link to="/dashboard/appointments" className="sidebar-item">
-            <i className="fa-solid fa-calendar"></i>
+          <NavLink
+            to="/dashboard/profile"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuUsers className="sidebar-item-icon" aria-hidden="true" />
+            <span>Manage personal &amp; pet profiles</span>
+          </NavLink>
+
+          <NavLink
+            to="/dashboard/appointments"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuCalendarDays className="sidebar-item-icon" aria-hidden="true" />
             <span>Book service appointments</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/dashboard/chat" className="sidebar-item">
-            <i className="fa-solid fa-message"></i>
+          <NavLink
+            to="/dashboard/chat"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuMessageCircle className="sidebar-item-icon" aria-hidden="true" />
             <span>Chat</span>
             <span className="badge">3</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/dashboard/feedback" className="sidebar-item">
-            <i className="fa-solid fa-comment"></i>
-            <span>Feedback & complaints</span>
-          </Link>
+          <NavLink
+            to="/dashboard/feedback"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuMessageSquare className="sidebar-item-icon" aria-hidden="true" />
+            <span>Feedback &amp; complaints</span>
+          </NavLink>
 
-          <Link to="/dashboard/notifications" className="sidebar-item">
-            <i className="fa-solid fa-bell"></i>
+          <NavLink
+            to="/dashboard/notifications"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuBell className="sidebar-item-icon" aria-hidden="true" />
             <span>Notifications</span>
-          </Link>
+          </NavLink>
         </div>
 
         <div className="sidebar-section">
           <div className="section-title">Support</div>
-          
-          <Link to="/dashboard/help" className="sidebar-item">
-            <i className="fa-solid fa-circle-question"></i>
+
+          <NavLink
+            to="/dashboard/help"
+            className={({ isActive }) => `sidebar-item${isActive ? ' active' : ''}`}
+          >
+            <LuCircleHelp className="sidebar-item-icon" aria-hidden="true" />
             <span>Help Center</span>
-          </Link>
+          </NavLink>
         </div>
 
         <button onClick={handleLogout} className="sidebar-item logout">
-          <i className="fa-solid fa-arrow-right-from-bracket"></i>
+          <LuLogOut className="sidebar-item-icon" aria-hidden="true" />
           <span>Logout</span>
         </button>
       </aside>
 
-      {/* Main Content */}
       <main className="dashboard-main">
         <Routes>
           <Route path="/" element={<Overview />} />

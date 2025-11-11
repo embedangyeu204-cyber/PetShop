@@ -1,0 +1,268 @@
+.vet-prescription-page {
+  display: flex;
+  min-height: 100vh;
+  background: #faf7ff;
+  color: #2b1c52;
+}
+
+.prescription-main {
+  flex: 1;
+  padding: 32px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prescription-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pill-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, #c084fc, #9333ea);
+  color: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pill-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(124, 58, 237, 0.18);
+}
+
+.pill-button.ghost {
+  background: rgba(124, 58, 237, 0.15);
+  color: #4b2da5;
+}
+
+.pill-button.soft {
+  background: rgba(236, 197, 255, 0.7);
+  color: #7a28c2;
+}
+
+.pill-button.small {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.prescription-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr);
+  gap: 20px;
+}
+
+.patient-card,
+.medication-card,
+.add-items-card,
+.medical-record-card,
+.guidance-card {
+  background: #fff;
+  border-radius: 28px;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(124, 58, 237, 0.08);
+}
+
+.patient-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.patient-info {
+  display: flex;
+  gap: 14px;
+}
+
+.patient-info img {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.patient-form {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.patient-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  color: #7b6bb3;
+}
+
+.patient-form select {
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 14px;
+  padding: 10px 14px;
+  background: #f9f6ff;
+  font-weight: 600;
+}
+
+.medication-card h3 {
+  margin-top: 0;
+}
+
+.medication-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.medication-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  color: #775faa;
+}
+
+.medication-form input,
+.medication-form textarea,
+.medication-form select {
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 16px;
+  padding: 10px 14px;
+  background: #f9f6ff;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.medication-form label.full {
+  grid-column: 1 / -1;
+}
+
+.medication-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.add-items-card .item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(120px, 0.9fr)) 120px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 18px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+.item-row.item-head {
+  background: #f7f3ff;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #9c8ed2;
+  font-weight: 700;
+}
+
+.item-pill {
+  background: #f9f6ff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  font-weight: 600;
+  color: #51308f;
+}
+
+.medical-record-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
+  gap: 20px;
+}
+
+.record-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.record-details span {
+  font-size: 13px;
+  color: #9d90c6;
+}
+
+.record-history {
+  margin-bottom: 14px;
+}
+
+.record-history p {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #7259ad;
+}
+
+.history-row {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  margin-bottom: 8px;
+  background: #fbf9ff;
+}
+
+.history-row svg {
+  color: #7b4ab6;
+}
+
+.guidance-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #6f659a;
+  line-height: 1.6;
+}
+
+.prescription-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .prescription-grid,
+  .medical-record-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prescription-header {
+    flex-direction: column;
+  }
+
+  .patient-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

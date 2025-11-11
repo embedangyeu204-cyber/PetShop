@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './Servicepage.css';
 
 export default function ServicePage() {
+  const navigate = useNavigate();
+
+  const goToAppointments = () => {
+    navigate('/dashboard/appointments');
+  };
+
   return (
     <div className="service-page">
       {/* Hero Section */}
@@ -15,7 +22,7 @@ export default function ServicePage() {
               Book vet visits, grooming, vaccinations, and more. Simple scheduling, 
               transparent pricing, and caring professionals.
             </p>
-            <button className="btn-appointment">
+            <button className="btn-appointment" type="button" onClick={goToAppointments}>
               <i className="bi bi-calendar"></i>
               Book an appointment
             </button>
@@ -47,7 +54,9 @@ export default function ServicePage() {
                 <div className="service-info">30-45 min&nbsp;&nbsp;&nbsp;From $49</div>
                 <div className="service-actions">
                   <button className="btn-outline">Details</button>
-                  <button className="btn-primary">Book</button>
+                  <button className="btn-primary" type="button" onClick={goToAppointments}>
+                    Book
+                  </button>
                 </div>
               </div>
             </div>
@@ -63,7 +72,9 @@ export default function ServicePage() {
                 <div className="service-info">60-90 min&nbsp;&nbsp;&nbsp;From $39</div>
                 <div className="service-actions">
                   <button className="btn-outline">Details</button>
-                  <button className="btn-primary">Book</button>
+                  <button className="btn-primary" type="button" onClick={goToAppointments}>
+                    Book
+                  </button>
                 </div>
               </div>
             </div>
@@ -79,7 +90,9 @@ export default function ServicePage() {
                 <div className="service-info">15-30 min&nbsp;&nbsp;&nbsp;From $29</div>
                 <div className="service-actions">
                   <button className="btn-outline">Details</button>
-                  <button className="btn-primary">Book</button>
+                  <button className="btn-primary" type="button" onClick={goToAppointments}>
+                    Book
+                  </button>
                 </div>
               </div>
             </div>
@@ -156,7 +169,9 @@ export default function ServicePage() {
                   <i className="bi bi-chat"></i>
                   Ask a question
                 </button>
-                <button className="btn-primary">Book with Dr. Lee</button>
+                <button className="btn-primary" type="button" onClick={goToAppointments}>
+                  Book with Dr. Lee
+                </button>
               </div>
             </div>
 
@@ -174,7 +189,9 @@ export default function ServicePage() {
                   <i className="bi bi-chat"></i>
                   Ask a question
                 </button>
-                <button className="btn-primary">Book with Dr. Gomez</button>
+                <button className="btn-primary" type="button" onClick={goToAppointments}>
+                  Book with Dr. Gomez
+                </button>
               </div>
             </div>
 
@@ -192,7 +209,9 @@ export default function ServicePage() {
                   <i className="bi bi-chat"></i>
                   Ask a question
                 </button>
-                <button className="btn-primary">Book with Dr. Patel</button>
+                <button className="btn-primary" type="button" onClick={goToAppointments}>
+                  Book with Dr. Patel
+                </button>
               </div>
             </div>
           </div>

@@ -1,68 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import UserMenu from './UserMenu';
+import { LuPawPrint } from 'react-icons/lu';
 import './header.css';
 
 function Header({ show = true }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
+  const userRole = useMemo(() => {
+    if (!user?.role) return undefined;
+    return user.role.toLowerCase() === 'veterinary' ? 'veterinarian' : user.role.toLowerCase();
+  }, [user?.role]);
+  const disableGlobalNav = userRole === 'veterinarian';
 
-  useEffect(() => {
-    const token = localStorage.getItem('token') || localStorage.getItem('authToken');
-    setIsLoggedIn(!!token);
+  if (!show) return null;
 
-    const handleStorageChange = () => {
-      const token = localStorage.getItem('token') || localStorage.getItem('authToken');
-      setIsLoggedIn(!!token);
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const handleUserClick = () => {
-    navigate('/dashboard');
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const handleRegister = () => {
     navigate('/customer-login');
   };
 
-  if (!show) return null;
+  const navLinks = [
+    { label: 'About', href: '/about' },
+    { label: 'Service', href: '/service' },
+    { label: 'Discovery', href: '/discovery' },
+  ];
 
   return (
     <header className="header">
       <div className="header-container">
         <Link to="/" className="header-brand">
-          <span className="brand-icon">🐾</span>
-          <span>Shop Pet</span>
+          <LuPawPrint className="brand-icon" aria-hidden="true" />
+          <div className="brand-text">
+            <span className="brand-title">Shop Pet</span>
+          </div>
         </Link>
 
         <button className="menu-toggle" onClick={toggleMenu}>
-          ☰
+          &#9776;
         </button>
 
         <div className={`header-nav-wrapper ${menuOpen ? 'active' : ''}`}>
           <ul className="header-nav">
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/service">Service</Link></li>
-            <li><Link to="/discovery">Discovery</Link></li>
+            {navLinks.map((item) => (
+              <li key={item.label}>
+                {disableGlobalNav ? (
+                  <span className="nav-link disabled-link" title="Navigation disabled for veterinarian workspace">
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link to={item.href}>{item.label}</Link>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className="header-actions">
-          {isLoggedIn ? (
-            <button className="btn-user" onClick={handleUserClick}>
-              <i className="fa-solid fa-user-circle"></i>
-              <span>{localStorage.getItem('userName') || 'Jane Doe'}</span>
-            </button>
+          {isAuthenticated ? (
+            <UserMenu />
           ) : (
             <button className="btn-register" onClick={handleRegister}>
-              <span className="user-icon">👤</span>
+              <span className="user-icon">&#9787;</span>
               <span>Register / Login</span>
             </button>
           )}

@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import './Homepage.css';
 import { FaGlobe } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // 👉 để điều hướng
+import { useAuth } from '../../context/AuthContext';
 
 const PetShop = () => {
   const [activeTab, setActiveTab] = useState('all');
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   const handleBookingClick = () => {
-    navigate("/customer-login"); // 👉 chuyển đến trang login
+    if (isAuthenticated) {
+      navigate("/dashboard/appointments");
+      return;
+    }
+    navigate("/consultation");
   };
 
   const pets = [

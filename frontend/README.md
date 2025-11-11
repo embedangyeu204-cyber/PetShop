@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## API configuration
+
+Authentication and booking features expect the .NET backend to be running. By default the frontend calls `https://localhost:7250/api`. You can override this by creating a `.env` file at the project root and adding:
+
+```
+REACT_APP_API_BASE_URL=https://your-server:port/api
+```
+
+Restart `npm start` after changing environment variables.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,3 +78,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Booking module
+
+- Customer dashboard now includes a “Book service appointments” page (`/dashboard/appointments`).
+- The UI pulls metadata from `GET /api/appointments/metadata` and books with `POST /api/appointments`.
+- Make sure the .NET backend is running on `https://localhost:7250` (or update `REACT_APP_API_BASE_URL`) before using the booking flow.

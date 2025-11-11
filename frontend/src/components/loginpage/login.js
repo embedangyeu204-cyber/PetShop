@@ -1,13 +1,72 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import './login.css';
 
-const Login = ({ onSwitchToRegister }) => {
+const roleRedirectMap = {
+  admin: '/admin-dashboard',
+  customer: '/dashboard',
+  veterinary: '/vet-dashboard',
+  veterinarian: '/vet-dashboard',
+};
+
+const normaliseRoleValue = (role) => {
+  if (!role) return undefined;
+  const value = role.toLowerCase();
+  if (value === 'veterinary') return 'veterinarian';
+  return value;
+};
+
+const HERO_IMAGE_URL =
+  'https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=900&q=80';
+
+const Login = ({ onSwitchToRegister, defaultRole = 'customer' }) => {
   const [formData, setFormData] = useState({
     emailOrPhone: '',
     password: '',
     rememberMe: false,
-    role: 'customer'
+    role: defaultRole,
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
+  const { login, error: authError, clearError, isAuthenticated, user } = useAuth();
+
+  useEffect(() => {
+    const storedIdentifier = localStorage.getItem('rememberedLogin');
+    if (storedIdentifier) {
+      setFormData((prev) => ({
+        ...prev,
+        emailOrPhone: storedIdentifier,
+        rememberMe: true,
+      }));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (authError) {
+      setMessage(authError);
+    }
+  }, [authError]);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      role: defaultRole,
+    }));
+  }, [defaultRole]);
+
+  const normalisedRole = useMemo(
+    () => normaliseRoleValue(formData.role) || formData.role?.toLowerCase(),
+    [formData.role],
+  );
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const userRole = normaliseRoleValue(user?.role) || normaliseRoleValue(normalisedRole) || normalisedRole;
+    const destination = roleRedirectMap[userRole] || '/';
+    navigate(destination, { replace: true });
+  }, [isAuthenticated, user, normalisedRole, navigate]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -15,16 +74,48 @@ const Login = ({ onSwitchToRegister }) => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    if (message) {
+      setMessage(null);
+      clearError();
+    }
   };
 
   const handleRoleSelect = (role) => {
     setFormData(prev => ({ ...prev, role }));
+    if (message) {
+      setMessage(null);
+      clearError();
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login data:', formData);
-    // Add your login logic here
+    setMessage(null);
+    setSubmitting(true);
+
+    const result = await login({
+      identifier: formData.emailOrPhone,
+      password: formData.password,
+      role: normaliseRoleValue(formData.role) || formData.role,
+    });
+
+    if (!result.success) {
+      setMessage(result.error || 'Login failed. Please try again.');
+      setSubmitting(false);
+      return;
+    }
+
+    if (formData.rememberMe) {
+      localStorage.setItem('rememberedLogin', formData.emailOrPhone);
+    } else {
+      localStorage.removeItem('rememberedLogin');
+    }
+
+    const redirectRole =
+      normaliseRoleValue(result.user?.role) || normaliseRoleValue(normalisedRole) || normalisedRole;
+    const destination = roleRedirectMap[redirectRole] || '/';
+    navigate(destination, { replace: true });
+    setSubmitting(false);
   };
 
   const handleForgotPassword = (e) => {
@@ -52,7 +143,7 @@ const Login = ({ onSwitchToRegister }) => {
           <h1>Welcome back to Shop Pet</h1>
           <p>Log in or create an account to book services, manage pets, and shop faster.</p>
           <div className="auth-image">
-            <img src="/images/window-cat.jpg" alt="Window with plants and cat" />
+            <img src={HERO_IMAGE_URL} alt="Window with plants and cat" loading="lazy" />
           </div>
         </div>
       </div>
@@ -140,10 +231,16 @@ const Login = ({ onSwitchToRegister }) => {
               </div>
             </div>
 
-            <button type="submit" className="btn-submit">
+            <button type="submit" className="btn-submit" disabled={submitting}>
               <i className="fa-solid fa-arrow-right-to-bracket"></i>
-              Login
+              {submitting ? 'Logging in...' : 'Login'}
             </button>
+
+            {message && (
+              <div className="form-error" role="alert">
+                {message}
+              </div>
+            )}
 
             <div className="divider">
               <span>or continue with</span>
